@@ -1,0 +1,71 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Image Info
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
+          default: "Configuration"
+        Parameters:
+          - IdentityName
+
+Parameters:
+  IdentityName:
+    Type: String
+    Description: SES IdentityName, must already exist in SES under Identity Management
+    Default: 'socialgood.bluefineng.com'
+
+Resources:
+
+  #
+  # Our S3 bucket that will store the inbound emails.
+  #
+  SesBucket:
+    Type: AWS::S3::Bucket
+
+  SampleBucketPolicy: 
+    Type: AWS::S3::BucketPolicy
+    Properties: 
+      Bucket: !Ref SesBucket
+      PolicyDocument: 
+        Statement: 
+          - Action: 
+              - 's3:PutObject'
+            Effect: 'Allow'
+            Resource: !Sub 'arn:aws:s3:::${SesBucket}/*'
+            Principal: 
+              Service: ses.amazonaws.com
+            Condition: 
+              StringEquals: 
+                aws:Referer: !Ref AWS::AccountId
+
+  #
+  # Our Lambda function that will receive inbound emails.  
+  #
+  SesFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: SesBucket
+    Properties:
+      Handler: index.handler
+      Timeout: 5
+      CodeUri: ./
+      Runtime: nodejs8.10
+      Environment:
+        Variables:
+          SesBucket: !Ref SesBucket
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref SesBucket
+        - SESCrudPolicy:
+            IdentityName: !Ref IdentityName
+
+Outputs:
+  SesFunction:
+    Description: SesFunction
+    Value: !Ref SesFunction
+  SesBucket:
+    Description: SesBucket
+    Value: !Ref SesBucket

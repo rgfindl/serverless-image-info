@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Serverless Image Info
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+    - Label:
+        default: Configuration
+      Parameters:
+      - IdentityName
+Outputs:
+  SesBucket:
+    Description: SesBucket
+    Value:
+      Ref: SesBucket
+  SesFunction:
+    Description: SesFunction
+    Value:
+      Ref: SesFunction
+Parameters:
+  IdentityName:
+    Default: socialgood.bluefineng.com
+    Description: SES IdentityName, must already exist in SES under Identity Management
+    Type: String
+Resources:
+  SampleBucketPolicy:
+    Properties:
+      Bucket:
+        Ref: SesBucket
+      PolicyDocument:
+        Statement:
+        - Action:
+          - s3:PutObject
+          Condition:
+            StringEquals:
+              aws:Referer:
+                Ref: AWS::AccountId
+          Effect: Allow
+          Principal:
+            Service: ses.amazonaws.com
+          Resource:
+            Fn::Sub: arn:aws:s3:::${SesBucket}/*
+    Type: AWS::S3::BucketPolicy
+  SesBucket:
+    Type: AWS::S3::Bucket
+  SesFunction:
+    DependsOn: SesBucket
+    Properties:
+      CodeUri: s3://serverless-image-info/7439b5966439d79244b70678424974fd
+      Environment:
+        Variables:
+          SesBucket:
+            Ref: SesBucket
+      Handler: index.handler
+      Policies:
+      - S3CrudPolicy:
+          BucketName:
+            Ref: SesBucket
+      - SESCrudPolicy:
+          IdentityName:
+            Ref: IdentityName
+      Runtime: nodejs8.10
+      Timeout: 5
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

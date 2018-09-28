@@ -1,0 +1,152 @@
+{
+  "Records": [
+      {
+          "eventSource": "aws:ses",
+          "eventVersion": "1.0",
+          "ses": {
+              "mail": {
+                  "timestamp": "2018-09-28T01:26:45.803Z",
+                  "source": "rgfindley@gmail.com",
+                  "messageId": "0e605kf8bfquhkthojbb0bc9d64d4gj15fpm2no1",
+                  "destination": [
+                      "imageinfo@socialgood.bluefineng.com"
+                  ],
+                  "headersTruncated": false,
+                  "headers": [
+                      {
+                          "name": "Return-Path",
+                          "value": "<rgfindley@gmail.com>"
+                      },
+                      {
+                          "name": "Received",
+                          "value": "from mail-pg1-f174.google.com (mail-pg1-f174.google.com [209.85.215.174]) by inbound-smtp.us-east-1.amazonaws.com with SMTP id 81ulahuoeektru1klcoedmhfee9cgmio9sgr7381 for imageinfo@socialgood.bluefineng.com; Fri, 28 Sep 2018 01:26:45 +0000 (UTC)"
+                      },
+                      {
+                          "name": "X-SES-Spam-Verdict",
+                          "value": "PASS"
+                      },
+                      {
+                          "name": "X-SES-Virus-Verdict",
+                          "value": "PASS"
+                      },
+                      {
+                          "name": "Received-SPF",
+                          "value": "pass (spfCheck: domain of _spf.google.com designates 209.85.215.174 as permitted sender) client-ip=209.85.215.174; envelope-from=rgfindley@gmail.com; helo=mail-pg1-f174.google.com;"
+                      },
+                      {
+                          "name": "Authentication-Results",
+                          "value": "amazonses.com; spf=pass (spfCheck: domain of _spf.google.com designates 209.85.215.174 as permitted sender) client-ip=209.85.215.174; envelope-from=rgfindley@gmail.com; helo=mail-pg1-f174.google.com; dkim=pass header.i=@gmail.com; dmarc=pass header.from=gmail.com;"
+                      },
+                      {
+                          "name": "X-SES-RECEIPT",
+                          "value": "AEFBQUFBQUFBQUFFcVdRYld5TDdJT1VDRENSN2VQZFl3aS9LN3h2RDRjNGRlbkt1dzRTQkVPeHdNUWFnQnl4SDRidjZQbTVzWjJ2MGZ2Y3ZCdkNLQmI0ZDFrYjFoSkVIMGE0YkVmSDBad2FLdCtMZDRwdk5oRUVwK2ZPRFFwSUlINTNQWFhMRTJoNkVDa2FSQXVwaldWOFJpb1Y1cHM4cEtRSWVlUzl2Q0wxdzVuNSs5eVdydW1EZHpYVW1TNHRZZXFiS1RCNEF2OWFCWW9UUFlTRUhmbW9va244OUlXdGhLY0NXa0RwNzh6TjZRQnpzVHA2MzdhMDA5T1RITlpsMHQ0NmpNRDE0YjdnNkdWMjdFeHpKb1VGUUpYcm1xdkJQcFY0VHVTM2hFRUhoc1pWU2RBcVRRaGc9PQ=="
+                      },
+                      {
+                          "name": "X-SES-DKIM-SIGNATURE",
+                          "value": "a=rsa-sha256; q=dns/txt; b=cvBJctna8Qisr+UJgmZk0C4NDF2OXJPbEscNaf1Sz6mWLFYxyaEtw5syTQWAZDaEu71vFqvZhABbrFCNXYKCS/UjUYAtzxQ6Oy56rqNq6YIFw0VAq/P4YfL9zFtXHg/8H+Qv9xM7lhRQJFb3S4p/Xb/bEMUc+jU81lF+Z+Bu36E=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1538098008; v=1; bh=LnWqHcUkZvJTbW5M4aXYpIyyuLuzFkt0a3pQGuqLUGo=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;"
+                      },
+                      {
+                          "name": "Received",
+                          "value": "by mail-pg1-f174.google.com with SMTP id n31-v6so3194566pgm.7 for <imageinfo@socialgood.bluefineng.com>; Thu, 27 Sep 2018 18:26:45 -0700 (PDT)"
+                      },
+                      {
+                          "name": "DKIM-Signature",
+                          "value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025; h=mime-version:references:in-reply-to:from:date:message-id:subject:to; bh=oWhDHupc8o9/A7tcv0Q2gVrpEJQtm19bfwFiOo212lU=; b=DrXyAk7kbvAigzl08Zw4z7mj+9/3IhNJ349OOTYwrp5WoJNClxVB9SWyDkcTQWs1C1IbhuaqokdsX2HrftjbTdhzd/dgQuv/b6k1J/npAY2IsNwmnHV9nxjEsXQC7vwEqtmNpnvSEkhlfusn9uMm3d6NKpGutK+WOHTACOyOPEim2zgaVDgtr5SaSKD6JZDq4yaYIOXQFReLUKVs3LKmkRHc52MbdJcPxL4gwPLEcn3/apqRqkzPtCrnt6Kra9eEO4vX0o+53h2y8Ufy24evNyuXysSloAfeYAyPNwdj+SgNV7178HLE22/aGIGZOyPiF1Hd2RDbUsMd3HfuZmCIVg=="
+                      },
+                      {
+                          "name": "X-Google-DKIM-Signature",
+                          "value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20161025; h=x-gm-message-state:mime-version:references:in-reply-to:from:date :message-id:subject:to; bh=oWhDHupc8o9/A7tcv0Q2gVrpEJQtm19bfwFiOo212lU=; b=tJyKWRXRh5NpzDWnqa8A78D1B1CCm3q2Keg9V3OLyJd8PDv8LjSUvzpZhvrb7mpMP9 U0z/OGo5iy8lU+zx6MdhdRwxVrro4uLd3C20fGwKXyqj9yzO0qTRt5KNtua3aFytfurU T4lY7RJnRlec3OiDjrnHGuTHh/V7/IbAwIvX/fsoj2Hp4GYFipmdJvZTq647ImPIz87m 8CXo9YCYS8QyJJh3ET6s6aTFvH+7aJAO0vuhpYuYMYSkNWKk0qGNhZy4Wn/5GT6N3yMF hXYy2MXFoky63gPA0r/eZ5dAEB09JSULZB2Vs/UWFrVuYkvJcH76rR5OsI6oT7MSLmOz cPIQ=="
+                      },
+                      {
+                          "name": "X-Gm-Message-State",
+                          "value": "ABuFfoixEmMH/Eu8VlmVrqSU6tG70ID3K3FrPQG3rworEsMQ+K8VUw6M Mf3iVzxDAuUEr9Fe/uU1JD5QhKtold4Z/dSyO5XPyQ=="
+                      },
+                      {
+                          "name": "X-Google-Smtp-Source",
+                          "value": "ACcGV609X7arC0Go71iUeBI6ag61XJAnUSBUg9N8LQ71KA2ic7cYm4WaOUqA7rdQdGLjFklBGP1N2oNIa1nUGYrw9lI="
+                      },
+                      {
+                          "name": "X-Received",
+                          "value": "by 2002:a63:fe02:: with SMTP id p2-v6mr12912602pgh.148.1538098004225; Thu, 27 Sep 2018 18:26:44 -0700 (PDT)"
+                      },
+                      {
+                          "name": "MIME-Version",
+                          "value": "1.0"
+                      },
+                      {
+                          "name": "References",
+                          "value": "<CAEJREQUdiLPV5atjrTLS-eXFpcSxdYFh9-vN2ps2djuwg32HUg@mail.gmail.com>"
+                      },
+                      {
+                          "name": "In-Reply-To",
+                          "value": "<CAEJREQUdiLPV5atjrTLS-eXFpcSxdYFh9-vN2ps2djuwg32HUg@mail.gmail.com>"
+                      },
+                      {
+                          "name": "From",
+                          "value": "Randy Findley <rgfindley@gmail.com>"
+                      },
+                      {
+                          "name": "Date",
+                          "value": "Thu, 27 Sep 2018 21:26:32 -0400"
+                      },
+                      {
+                          "name": "Message-ID",
+                          "value": "<CAEJREQX+_dZUX8J5dk-mEe1eVi-WQ54oVEMU7nWNBL+RYmhvEw@mail.gmail.com>"
+                      },
+                      {
+                          "name": "Subject",
+                          "value": "Fwd: image"
+                      },
+                      {
+                          "name": "To",
+                          "value": "imageinfo@socialgood.bluefineng.com"
+                      },
+                      {
+                          "name": "Content-Type",
+                          "value": "multipart/related; boundary=\"0000000000002cac570576e4598a\""
+                      }
+                  ],
+                  "commonHeaders": {
+                      "returnPath": "rgfindley@gmail.com",
+                      "from": [
+                          "Randy Findley <rgfindley@gmail.com>"
+                      ],
+                      "date": "Thu, 27 Sep 2018 21:26:32 -0400",
+                      "to": [
+                          "imageinfo@socialgood.bluefineng.com"
+                      ],
+                      "messageId": "<CAEJREQX+_dZUX8J5dk-mEe1eVi-WQ54oVEMU7nWNBL+RYmhvEw@mail.gmail.com>",
+                      "subject": "Fwd: image"
+                  }
+              },
+              "receipt": {
+                  "timestamp": "2018-09-28T01:26:45.803Z",
+                  "processingTimeMillis": 2843,
+                  "recipients": [
+                      "imageinfo@socialgood.bluefineng.com"
+                  ],
+                  "spamVerdict": {
+                      "status": "PASS"
+                  },
+                  "virusVerdict": {
+                      "status": "PASS"
+                  },
+                  "spfVerdict": {
+                      "status": "PASS"
+                  },
+                  "dkimVerdict": {
+                      "status": "PASS"
+                  },
+                  "dmarcVerdict": {
+                      "status": "PASS"
+                  },
+                  "action": {
+                      "type": "Lambda",
+                      "functionArn": "arn:aws:lambda:us-east-1:132093761664:function:serverless-image-info-ApiFunction-MLQKPJWF6PNI",
+                      "invocationType": "Event"
+                  }
+              }
+          }
+      }
+  ]
+}
